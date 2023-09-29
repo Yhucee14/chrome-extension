@@ -1,11 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Popup Content</title>
+    <style>
+        /* Add CSS styles here */
+        body {
+            display: flex;
+            height: 439px;
+            width: 300px;
+            background: transparent;
+            margin: 0;
+            /* Remove default margin */
+            justify-content: center;
+            /* Center content horizontally */
+            align-items: center;
+            /* Center content vertically */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            border-radius: 20px;
+            overflow: hidden;
+            /* Ensure content inside container is clipped */
+            width: 100%;
+            /* Ensure the container takes full width */
+            height: 100%;
+            /* Ensure the container takes full height */
+        }
+
+        .header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 10px;
+            /* Add padding as needed */
+        }
+
+        .logo {
+            margin-right: 1rem;
+            /* Add margin between the logo and text */
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            /* Adjust the gap between menu items as needed */
+        }
+
+        .icon {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            gap: 2rem;
+            /* Adjust the gap between menu items as needed */
+        }
+
+        .icons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .rounded {
+            display: block;
+            justify-content: center;
+            padding: 3px;
+            gap: 2rem;
+        }
+
+        .round {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px;
+        }
+
+        .block {
+            display: flex;
+            padding: 3px;
+        }
+
+        .btn-con {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Add styles for the toggle button */
+        .toggle-container {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+            background-color: rgb(46, 1, 46);
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .toggle-handle {
+            position: absolute;
+            width: 20px;
+            height: 16px;
+            margin-top: 2px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.2s ease-in-out;
+            transform: translateX(0); /* Initialize as off */
+        }
+
+        /* Hide the default checkbox input */
+        input[type="checkbox"] {
+            display: none;
+        }
+    </style>
 </head>
+
 <body>
-    <div>popup</div>
+    <div class="container">
+        <div class="header">
+            <img src="icon32.png" alt="Logo Image" class="logo">
+            <div class="logo">HelpMeOut</div>
+            <div class="menu">
+                <img src="setting-2.png" alt="Fullscreen Icon">
+                <img src="close-circle.png" alt="Fullscreen Icon">
+            </div>
+        </div>
+
+        <p>
+            This extension helps you record and share help videos with ease
+        </p>
+
+        <div class="icon">
+            <div class="icons">
+                <img src="monitor.png" alt="Fullscreen Icon">
+                <div>Full screen</div>
+            </div>
+
+            <div class="icons">
+                <img src="copy.png" alt="Current Tab Icon">
+                <div>Current tab</div>
+            </div>
+        </div>
+
+        <div class="rounded">
+            <div class="round">
+                <div class="block">
+                    <img src="video-camera.png" alt="Current Tab Icon">
+                    <div>Camera</div>
+                </div>
+                <!-- Replace "select" with "toggle" checkbox input -->
+                <label class="toggle-container">
+                    <input type="checkbox" id="camera-toggle" class="toggle-input">
+                    <span class="toggle-handle"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="rounded">
+            <div class="round">
+                <div class="block">
+                    <img src="microphone.png" alt="Current Tab Icon">
+                    <div>Audio</div>
+                </div>
+                <!-- Replace "select" with "toggle" checkbox input -->
+                <label class="toggle-container">
+                    <input type="checkbox" id="audio-toggle" class="toggle-input">
+                    <span class="toggle-handle"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="btn-con">
+            <button class="btn">
+                Start Recording
+            </button>
+        </div>
+    </div>
+
+    <!-- Add this line to include the external script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const cameraToggle = document.getElementById("camera-toggle");
+  const audioToggle = document.getElementById("audio-toggle");
+
+  cameraToggle.addEventListener("change", function () {
+      const handle = this.nextElementSibling;
+      if (this.checked) {
+          handle.style.transform = "translateX(20px)";
+      } else {
+          handle.style.transform = "translateX(0)";
+      }
+  });
+
+  audioToggle.addEventListener("change", function () {
+      const handle = this.nextElementSibling;
+      if (this.checked) {
+          handle.style.transform = "translateX(20px)";
+      } else {
+          handle.style.transform = "translateX(0)";
+      }
+  });
+});
+
+</script>
+
 </body>
+
 </html>
